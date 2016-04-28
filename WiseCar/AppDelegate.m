@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GFSignInViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    GFSignInViewController *signinVC = [[GFSignInViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signinVC];
+    navigationVC.navigationBarHidden = YES;
+    self.window.rootViewController = navigationVC;
+    [self.window makeKeyAndVisible];
+    
+    
+    
     return YES;
 }
 
