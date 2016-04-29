@@ -10,6 +10,9 @@
 #import "GFNavigationView.h"
 #import "GFTextFieldView.h"
 #import "GFVerifyViewController.h"
+#import "GFTipView.h"
+#import "GFVerifyTool.h"
+#import "GFHttpTool.h"
 
 @interface GFSignInViewController () {
 
@@ -116,6 +119,10 @@
     [self.view addSubview:self.signinView];
     self.signinView.hidden = NO;
     
+    /* 获取手机号和密码 */
+    NSUserDefaults *accountDef = [NSUserDefaults standardUserDefaults];
+    NSArray *accountArr = [accountDef objectForKey:@"accountMsg"];
+    
     // 账号输入框
     CGFloat userTxtW = kWidth;
     CGFloat userTxtH = kHeight * 0.078;
@@ -125,11 +132,13 @@
     self.userTxt.textField.placeholder = @"请输入用户名";
     [self.userTxt.textField setValue:[UIFont systemFontOfSize:(15 / 320.0 * kWidth)] forKeyPath:@"_placeholderLabel.font"];
     self.userTxt.textField.clearButtonMode = UITextFieldViewModeAlways;
+    self.userTxt.textField.keyboardType = UIKeyboardTypeNumberPad;
+    self.userTxt.textField.text = accountArr[0];
     [self.signinView addSubview:self.userTxt];
     
     
     // 密码输入框
-        // 眼睛按钮
+    /* 眼睛按钮 */
     UIButton *eyeBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [eyeBtn1 addTarget:self action:@selector(eyeBtn1Click:) forControlEvents:UIControlEventTouchUpInside];
     CGFloat pwdTxtW = kWidth;
@@ -139,6 +148,9 @@
     self.pwdTxt = [[GFTextFieldView alloc] initWithFrame:CGRectMake(pwdTxtX, pwdTxtY, pwdTxtW, pwdTxtH) withLeftImgName:@"2" withRightButton:eyeBtn1 withBtnNorImgName:@"1" withBtnHigImgName:@"4"];
     self.pwdTxt.textField.placeholder = @"请输入密码";
     [self.pwdTxt.textField setValue:[UIFont systemFontOfSize:(15 / 320.0 * kWidth)] forKeyPath:@"_placeholderLabel.font"];
+    self.pwdTxt.textField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.pwdTxt.textField.secureTextEntry = YES;
+    self.pwdTxt.textField.text = accountArr[1];
     [self.signinView addSubview:self.pwdTxt];
     
     
@@ -255,25 +267,115 @@
     NSLog(@"选择注册按钮");
 }
 
+
+
 #pragma mark - 登录按钮点击事件
 - (void)signinBtnClick {
     
+    [self.view endEditing:YES];
     
+    
+    
+    if(self.userTxt.textField.text.length == 0) {
+        [self tipShow:@"用户名不能为空"];
+        
+    }else if(![GFVerifyTool validateMobile:self.userTxt.textField.text]) {
+        [self tipShow:@"请输入正确的用户名"];
+        
+    }else if(self.pwdTxt.textField.text.length == 0) {
+        [self tipShow:@"请输入密码"];
+        
+//    }else if(![GFVerifyTool validatePasswordA:self.pwdTxt.textField.text]) {
+//        [self tipShow:@"请输入正确的密码"];
+        
+    }else {
+        
+        NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
+        mDic[@"phone"] = self.userTxt.textField.text;
+        mDic[@"pwd"] = self.pwdTxt.textField.text;
+        [GFHttpTool signinPostWithParameters:mDic success:^(id responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            NSString *status = responseObject[@"status"];
+            if([status isEqualToString:@"success"]) {
+                [self tipShow:@"登录成功"];
+                
+                /* 存储手机号和密码 */
+                NSArray *accountArr = @[self.userTxt.textField.text, self.pwdTxt.textField.text];
+                NSUserDefaults *accountDef = [NSUserDefaults standardUserDefaults];
+                [accountDef setObject:accountArr forKey:@"accountMsg"];
+                
+                
+                NSLog(@"登录成功");
+            }else {
+                
+                NSString *error = responseObject[@"error"];
+                [self tipShow:error];
+            }
+            
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
     NSLog(@"正在登录");
 }
+
+
 #pragma mark - 注册界面下一步按钮
 - (void)nextBtnClick {
     
+    [self.view endEditing:YES];
     
-    GFVerifyViewController *verifyVC = [[GFVerifyViewController alloc] init];
-    [self.navigationController pushViewController:verifyVC animated:NO];
+    if(self.userTxt_up.textField.text.length == 0) {
+        [self tipShow:@"用户名不能为空"];
+        
+    }else if(self.phoneTxt_up.textField.text.length == 0) {
+        [self tipShow:@"手机号不能为空"];
     
-    NSLog(@"下一步");
+    }else if(![GFVerifyTool validateMobile:self.phoneTxt_up.textField.text]) {
+        [self tipShow:@"请输入正确的手机号"];
+        
+    }else if(self.pwdTxt_up.textField.text.length == 0) {
+        [self tipShow:@"密码不能为空"];
+        
+    }else if(![GFVerifyTool validatePasswordA:self.pwdTxt_up.textField.text]) {
+        [self tipShow:@"密码由8~18未字母和数字组成"];
+        
+    }else {
+        
+        NSLog(@"下一步");
+        
+        NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
+        mDic[@"phone"] = self.phoneTxt_up.textField.text;
+        [GFHttpTool verifyGetWithParameters:mDic success:^(id responseObject) {
+            NSLog(@"%@", responseObject);
+            NSString *status = responseObject[@"status"];
+            if([status isEqualToString:@"success"]) {
+                NSLog(@"请求成功");
+                
+                GFVerifyViewController *verifyVC = [[GFVerifyViewController alloc] init];
+                [self.navigationController pushViewController:verifyVC animated:NO];
+            }
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    }
+    
+    
+    
+    
+    
+    
 }
 
 #pragma mark - 眼睛按钮
 - (void)eyeBtn1Click:(UIButton *)sender {
     sender.selected = !sender.selected;
+    
+    self.pwdTxt.textField.secureTextEntry = !self.pwdTxt.textField.secureTextEntry;
 }
 - (void)eyeBtn2Click:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -287,7 +389,11 @@
 
 
 
+- (void)tipShow:(NSString *)tipMsg {
 
+    GFTipView *tipView = [[GFTipView alloc] initWithNormalHeightWithMessage:tipMsg withShowTimw:1.5];
+    [tipView tipViewShow];
+}
 
 
 

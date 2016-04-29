@@ -19,7 +19,9 @@
 /**
  *  光法请求
  */
-
-
+// 获取验证码
++ (void)verifyGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+// 登录
++ (void)signinPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
 
 @end

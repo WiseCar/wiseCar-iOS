@@ -12,7 +12,7 @@
 #import "Reachability.h"
 
 
-NSString *const prefixURL = @"";
+NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
 
 
 @implementation GFHttpTool
@@ -20,6 +20,10 @@ NSString *const prefixURL = @"";
 + (void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    // 去掉返回体中所有的空指针类型
+    AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+    response.removesKeysWithNullValues = YES;
     
     [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(success) {
@@ -55,6 +59,10 @@ NSString *const prefixURL = @"";
         NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
        
         [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if(success) {
@@ -80,6 +88,10 @@ NSString *const prefixURL = @"";
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
         [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if(success) {
                 success(responseObject);
@@ -98,9 +110,67 @@ NSString *const prefixURL = @"";
 }
 
 
+#pragma mark - 获取验证码
++ (void)verifyGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *phone = parameters[@"phone"];
+        NSString *suffixURL = @"/api/pub/sendVerifyCodeSms/";
+        NSString *url = [NSString stringWithFormat:@"%@%@%@", prefixURL, suffixURL, phone];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+}
 
 
-
+#pragma mark - 登录
++ (void)signinPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+    
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/pub/login";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+}
 
 
 

@@ -9,6 +9,9 @@
 #import "GFVerifyViewController.h"
 #import "GFNavigationView.h"
 #import "GFSignUpViewController.h"
+#import "GFTipView.h"
+#import "GFHttpTool.h"
+#import "GFSignInViewController.h"
 
 
 @interface GFVerifyViewController () {
@@ -135,9 +138,20 @@
 
 #pragma mark - 提交按钮点击事件
 - (void)submitBtnClick {
+    
+    [self.view endEditing:YES];
+    
+    if(self.verifyTxt.text.length == 0) {
+        
+        [self tipShow:@"请输入验证码"];
+        
+    }else {
+        
+        GFSignUpViewController *signupVC = [[GFSignUpViewController alloc] init];
+        [self.navigationController pushViewController:signupVC animated:NO];
+    }
 
-    GFSignUpViewController *signupVC = [[GFSignUpViewController alloc] init];
-    [self.navigationController pushViewController:signupVC animated:NO];
+    
     
 }
 
@@ -169,6 +183,13 @@
     self.timeLab.attributedText = mStr;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeShow) userInfo:nil repeats:YES];
     
+}
+
+
+- (void)tipShow:(NSString *)tipMsg {
+    
+    GFTipView *tipView = [[GFTipView alloc] initWithNormalHeightWithMessage:tipMsg withShowTimw:1.5];
+    [tipView tipViewShow];
 }
 
 

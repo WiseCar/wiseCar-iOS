@@ -10,4 +10,7 @@
 
 @interface GFVerifyViewController : UIViewController
 
+
+//@property (nonatomic, copy) NSString 
+
 @end

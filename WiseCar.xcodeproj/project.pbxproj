@@ -20,6 +20,7 @@
 		86ECD0251CD1EAEB00EEE20B /* GFDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ECD0241CD1EAEB00EEE20B /* GFDelegateViewController.m */; };
 		86ECD0271CD1F3BD00EEE20B /* servicedelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = 86ECD0261CD1F3BD00EEE20B /* servicedelegate.html */; };
 		86ECD0291CD1F45000EEE20B /* ssbb.html in Resources */ = {isa = PBXBuildFile; fileRef = 86ECD0281CD1F45000EEE20B /* ssbb.html */; };
+		86ECD02C1CD2084400EEE20B /* GFVerifyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */; };
 		9B0EA9711CCF45BF00EAFFCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9701CCF45BF00EAFFCD /* main.m */; };
 		9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9731CCF45BF00EAFFCD /* AppDelegate.m */; };
 		9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9761CCF45BF00EAFFCD /* ViewController.m */; };
@@ -64,6 +65,8 @@
 		86ECD0241CD1EAEB00EEE20B /* GFDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFDelegateViewController.m; sourceTree = "<group>"; };
 		86ECD0261CD1F3BD00EEE20B /* servicedelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = servicedelegate.html; sourceTree = "<group>"; };
 		86ECD0281CD1F45000EEE20B /* ssbb.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ssbb.html; sourceTree = "<group>"; };
+		86ECD02A1CD2084400EEE20B /* GFVerifyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFVerifyTool.h; sourceTree = "<group>"; };
+		86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFVerifyTool.m; sourceTree = "<group>"; };
 		89294D3CEFF053C426901946 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA96C1CCF45BF00EAFFCD /* WiseCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA9701CCF45BF00EAFFCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				86853FC11CD055E400730D51 /* GFTextFieldView.m */,
 				862F95ED1CD067DD00957765 /* GFNavigationView.h */,
 				862F95EE1CD067DD00957765 /* GFNavigationView.m */,
+				86ECD02A1CD2084400EEE20B /* GFVerifyTool.h */,
+				86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */,
 			);
 			path = "GF自定义";
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 				9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */,
 				86853FC21CD055E400730D51 /* GFTextFieldView.m in Sources */,
 				86CD46A71CCF65E90049F795 /* GFTipView.m in Sources */,
+				86ECD02C1CD2084400EEE20B /* GFVerifyTool.m in Sources */,
 				9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */,
 				86CD469D1CCF52930049F795 /* GFHttpTool.m in Sources */,
 				86853FB61CD050A000730D51 /* GFSignInViewController.m in Sources */,
