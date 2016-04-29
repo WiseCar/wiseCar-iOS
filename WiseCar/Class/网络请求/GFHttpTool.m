@@ -109,8 +109,8 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
 
 }
 
-
-#pragma mark - 获取验证码
+/* 光法请求 */
+#pragma mark - 1.获取验证码
 + (void)verifyGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
 
     if ([GFHttpTool isConnectionAvailable]) {
@@ -141,13 +141,12 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
     }
 }
 
-
-#pragma mark - 登录
-+ (void)signinPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+#pragma mark - 2.检测用户标识可用性
++ (void)checkGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
     
     if ([GFHttpTool isConnectionAvailable]) {
         
-        NSString *suffixURL = @"/api/pub/login";
+        NSString *suffixURL = @"/api/pub/checkPhoneNameEmail";
         NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -156,7 +155,7 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
         AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
         response.removesKeysWithNullValues = YES;
         
-        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if(success) {
                 success(responseObject);
             }
@@ -172,11 +171,9 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
     }
 }
 
-
-
-#pragma mark - 注册账户
+#pragma mark - 3.注册账户
 + (void)signupPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
-
+    
     if ([GFHttpTool isConnectionAvailable]) {
         
         NSString *suffixURL = @"/api/pub/register";
@@ -204,16 +201,102 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
     }
 }
 
-
-#pragma msrk - 检查用户标识可用性
-+ (void)checkGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
-
+/* token请求  cookie跟后天统一*/
+// [manager.requestSerializer setValue:token forHTTPHeaderField:@"Cookie"];
+#pragma mark - 4.登录
++ (void)signinPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+    
     if ([GFHttpTool isConnectionAvailable]) {
         
-        NSString *suffixURL = @"/api/pub/checkPhoneNameEmail";
+        NSString *suffixURL = @"/api/pub/login";
         NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            // 获取token 针对个人的操作要加
+            NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage]; // 获得响应头
+            NSLog(@"####################################\n---%@--",[cookieJar cookies]); // 获取响应头的数组
+            NSUserDefaults *autokenValue = [NSUserDefaults standardUserDefaults];
+            for (int i = 0; i < [cookieJar cookies].count; i++) {
+                NSHTTPCookie *cookie = [cookieJar cookies][i]; // 实例化响应头数组对象
+                
+                if ([cookie.name isEqualToString:@"token"]) { // 获取响应头数组对象里地名字为Set-Cookie的对象
+                    
+                     //获取响应头数组对象里地名字为autoken的对象的数据，这个数据是用来验证用户身份相当于“key”
+                    NSLog(@"############%@", [NSString stringWithFormat:@"%@=%@",[cookie name],[cookie value]]);
+
+                    [autokenValue setObject:[NSString stringWithFormat:@"%@=%@", cookie.name, cookie.value] forKey:@"token"];
+                    break;
+                }
+            }
+            
+            
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+}
+
+#pragma mark - 5.重置密码
++ (void)passwordPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+    
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/pub/resetPwd";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+    
+
+
+}
+
+#pragma mark - 6.获取账户信息
+//token=ZC7sjX%2BV6DZXCDzIfHOiFQ%3D%3D
++ (void)userMsgGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+    
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/mobile/user";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager.requestSerializer setValue:@"token=ZC7sjX%2BV6DZXCDzIfHOiFQ%3D%3D" forHTTPHeaderField:@"Cookie"];
         
         // 去掉返回体中所有的空指针类型
         AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
@@ -234,6 +317,46 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
         [GFHttpTool addTipView:@"网络无链接，请检查网络"];
     }
 }
+
+
+#pragma mark - 7.更新账户信息
++ (void)updataUserPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/mobile/user";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager.requestSerializer setValue:@"token=ZC7sjX%2BV6DZXCDzIfHOiFQ%3D%3D" forHTTPHeaderField:@"Cookie"];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+    
+
+}
+
+/************************************#################*****************************************/
+
+
+
 
 
 

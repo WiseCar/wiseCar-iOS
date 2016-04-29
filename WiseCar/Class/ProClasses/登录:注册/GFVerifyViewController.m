@@ -144,6 +144,10 @@
         
         [self tipShow:@"请输入验证码"];
         
+    }else if(self.verifyTxt.text.length != 6) {
+    
+        [self tipShow:@"您输入的验证码有误！"];
+        
     }else {
         
         NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
@@ -165,7 +169,6 @@
                 NSString *error = responseObject[@"error"];
                 [self tipShow:error];
             }
-            
             
             
         } failure:^(NSError *error) {

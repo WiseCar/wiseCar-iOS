@@ -13,6 +13,7 @@
 #import "GFTipView.h"
 #import "GFVerifyTool.h"
 #import "GFHttpTool.h"
+#import "ViewController.h"
 
 @interface GFSignInViewController () {
 
@@ -307,6 +308,8 @@
                 NSArray *accountArr = @[self.userTxt.textField.text, self.pwdTxt.textField.text];
                 NSUserDefaults *accountDef = [NSUserDefaults standardUserDefaults];
                 [accountDef setObject:accountArr forKey:@"accountMsg"];
+                
+                [self.navigationController pushViewController:[[ViewController alloc] init] animated:NO];
                 
                 
                 NSLog(@"登录成功");
