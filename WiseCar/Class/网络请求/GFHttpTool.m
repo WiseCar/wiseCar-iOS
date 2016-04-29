@@ -174,6 +174,77 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
 
 
 
+#pragma mark - 注册账户
++ (void)signupPostWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/pub/register";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+}
+
+
+#pragma msrk - 检查用户标识可用性
++ (void)checkGetWithParameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
+
+    if ([GFHttpTool isConnectionAvailable]) {
+        
+        NSString *suffixURL = @"/api/pub/checkPhoneNameEmail";
+        NSString *url = [NSString stringWithFormat:@"%@%@", prefixURL, suffixURL];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        // 去掉返回体中所有的空指针类型
+        AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+        response.removesKeysWithNullValues = YES;
+        
+        [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if(success) {
+                success(responseObject);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if(failure) {
+                failure(error);
+            }
+        }];
+        
+    }else {
+        
+        [GFHttpTool addTipView:@"网络无链接，请检查网络"];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - 判断网络连接情况
 // 加号方法里只能够调用加号方法
 +(BOOL)isConnectionAvailable{
