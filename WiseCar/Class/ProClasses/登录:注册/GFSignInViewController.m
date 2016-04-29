@@ -210,6 +210,7 @@
     self.phoneTxt_up.textField.placeholder = @"+86 13888888888";
     [self.phoneTxt_up.textField setValue:[UIFont systemFontOfSize:(15 / 320.0 * kWidth)] forKeyPath:@"_placeholderLabel.font"];
     self.phoneTxt_up.textField.clearButtonMode = UITextFieldViewModeAlways;
+    self.phoneTxt_up.textField.keyboardType = UIKeyboardTypeNumberPad;
     [self.signupView addSubview:self.phoneTxt_up];
     
     
@@ -224,6 +225,8 @@
     self.pwdTxt_up = [[GFTextFieldView alloc] initWithFrame:CGRectMake(pwdTxt_upX, pwdTxt_upY, pwdTxt_upW, pwdTxt_upH) withLeftImgName:@"1" withRightButton:eyeBtn2 withBtnNorImgName:@"1" withBtnHigImgName:@"4"];
     self.pwdTxt_up.textField.placeholder = @"请输入密码";
     [self.pwdTxt_up.textField setValue:[UIFont systemFontOfSize:(15 / 320.0 * kWidth)] forKeyPath:@"_placeholderLabel.font"];
+    self.pwdTxt_up.textField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.pwdTxt_up.textField.secureTextEntry = YES;
     [self.signupView addSubview:self.pwdTxt_up];
     
     
@@ -346,19 +349,46 @@
         
         NSLog(@"下一步");
         
-        NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
-        mDic[@"phone"] = self.phoneTxt_up.textField.text;
-        [GFHttpTool verifyGetWithParameters:mDic success:^(id responseObject) {
+        /* 验证手机号是否被注册过 */
+        NSMutableDictionary *mmDic = [[NSMutableDictionary alloc] init];
+        mmDic[@"phone"] = self.phoneTxt_up.textField.text;
+        [GFHttpTool checkGetWithParameters:mmDic success:^(id responseObject) {
+            
             NSLog(@"%@", responseObject);
-            NSString *status = responseObject[@"status"];
-            if([status isEqualToString:@"success"]) {
-                NSLog(@"请求成功");
+            
+            NSInteger phoneF =  [responseObject[@"phone"] integerValue];
+            if(phoneF == 1) {
                 
-                GFVerifyViewController *verifyVC = [[GFVerifyViewController alloc] init];
-                [self.navigationController pushViewController:verifyVC animated:NO];
+                /* 获取验证码 */
+                NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
+                mDic[@"phone"] = self.phoneTxt_up.textField.text;
+                [GFHttpTool verifyGetWithParameters:mDic success:^(id responseObject) {
+                    NSLog(@"%@", responseObject);
+                    NSString *status = responseObject[@"status"];
+                    if([status isEqualToString:@"success"]) {
+                        NSLog(@"请求成功");
+                        
+                        GFVerifyViewController *verifyVC = [[GFVerifyViewController alloc] init];
+                        verifyVC.nick = self.userTxt_up.textField.text;
+                        verifyVC.phone = self.phoneTxt_up.textField.text;
+                        verifyVC.pwd = self.pwdTxt_up.textField.text;
+                        [self.navigationController pushViewController:verifyVC animated:NO];
+                    }
+                    
+                } failure:^(NSError *error) {
+                    
+                }];
+                
+            }else if(phoneF == 0) {
+            
+                [self tipShow:@"手机号已被注册"];
             }
             
+            
+            
         } failure:^(NSError *error) {
+           
+            
             
         }];
         
@@ -379,6 +409,8 @@
 }
 - (void)eyeBtn2Click:(UIButton *)sender {
     sender.selected = !sender.selected;
+    
+    self.pwdTxt_up.textField.secureTextEntry = !self.pwdTxt_up.textField.secureTextEntry;
 }
 
 
