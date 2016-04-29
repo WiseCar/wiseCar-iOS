@@ -27,6 +27,7 @@
 		9B0EA97F1CCF45BF00EAFFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97D1CCF45BF00EAFFCD /* LaunchScreen.storyboard */; };
 		9B0EA98A1CCF45BF00EAFFCD /* WiseCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */; };
 		9B5068641CD209C300633195 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5068631CD209C300633195 /* Reachability.m */; };
+		9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		9B0EA98B1CCF45BF00EAFFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B5068621CD209C300633195 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9B5068631CD209C300633195 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDrawRadialGradientView.m; sourceTree = "<group>"; };
+		9B9FAE801CD2F3FF0014A74A /* CLDrawRadialGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDrawRadialGradientView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,17 +158,10 @@
 		86CD46971CCF4C3F0049F795 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
-				86CD46981CCF4C3F0049F795 /* CL自定义 */,
+				9B9FAE7E1CD2F3EF0014A74A /* CL自定义 */,
 				86CD46991CCF4C3F0049F795 /* GF自定义 */,
 			);
 			path = "自定义控件";
-			sourceTree = "<group>";
-		};
-		86CD46981CCF4C3F0049F795 /* CL自定义 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "CL自定义";
 			sourceTree = "<group>";
 		};
 		86CD46991CCF4C3F0049F795 /* GF自定义 */ = {
@@ -244,6 +240,15 @@
 				9B0EA98B1CCF45BF00EAFFCD /* Info.plist */,
 			);
 			path = WiseCarUITests;
+			sourceTree = "<group>";
+		};
+		9B9FAE7E1CD2F3EF0014A74A /* CL自定义 */ = {
+			isa = PBXGroup;
+			children = (
+				9B9FAE801CD2F3FF0014A74A /* CLDrawRadialGradientView.h */,
+				9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */,
+			);
+			path = "CL自定义";
 			sourceTree = "<group>";
 		};
 		BD5E0B63FACCAF304F755D4B /* Pods */ = {
@@ -412,6 +417,7 @@
 				9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */,
 				86853FC21CD055E400730D51 /* GFTextFieldView.m in Sources */,
 				86CD46A71CCF65E90049F795 /* GFTipView.m in Sources */,
+				9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */,
 				9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */,
 				86CD469D1CCF52930049F795 /* GFHttpTool.m in Sources */,
 				86853FB61CD050A000730D51 /* GFSignInViewController.m in Sources */,

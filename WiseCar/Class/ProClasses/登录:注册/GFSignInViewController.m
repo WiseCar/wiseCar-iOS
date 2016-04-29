@@ -260,15 +260,15 @@
 #pragma mark - 登录按钮点击事件
 - (void)signinBtnClick {
     
-//    [GFHttpTool post:@"http://dev.incardata.com.cn/wisecar/api/pub/login" parameters:@{@"phone":@"18672944895",@"pwd":@"123456"} success:^(id responseObject) {
-//        
-//        NSLog(@"--请求成功--%@",responseObject);
-//        
-//    } failure:^(NSError *error) {
-//        
-//        NSLog(@"----请求失败----%@--",error);
-//        
-//    }];
+    [GFHttpTool post:@"http://dev.incardata.com.cn/wisecar/api/pub/login" parameters:@{@"phone":@"18672944895",@"pwd":@"123456"} success:^(id responseObject) {
+        
+        NSLog(@"--请求成功--%@",responseObject);
+        
+    } failure:^(NSError *error) {
+        
+        NSLog(@"----请求失败----%@--",error);
+        
+    }];
     
     
     

@@ -21,6 +21,9 @@ NSString *const prefixURL = @"";
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    
+    
+    
     [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(success) {
             success(responseObject);
@@ -34,6 +37,8 @@ NSString *const prefixURL = @"";
 + (void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
+    response.removesKeysWithNullValues = YES;
     
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(success) {

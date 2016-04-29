@@ -10,9 +10,13 @@
 
 #import "GFTipView.h"
 #import "GFTextFieldView.h"
+#import "CLDrawRadialGradientView.h"
+
 
 @interface ViewController ()
-
+{
+    CLDrawRadialGradientView *_radialView;
+}
 @end
 
 @implementation ViewController
@@ -46,8 +50,32 @@
 //    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
 //    GFTextFieldView *txtvv = [[GFTextFieldView alloc] initWithFrame:CGRectMake(0, 150, kWidth, 50) withLeftImgName:@"1" withRightButton:btn withBtnImgName:@"2"];
 //    [self.view addSubview:txtvv];
-//    
+//
+    
+    
+    _radialView = [[CLDrawRadialGradientView alloc]initWithFrame:CGRectMake(100, 100, 200, 200)];
+    _radialView.center = self.view.center;
+    _radialView.backgroundColor = [UIColor whiteColor];
+    [_radialView setLabel];
+    [self.view addSubview:_radialView];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(getData) userInfo:nil repeats:YES];
+    
+    
 }
+
+
+- (void)getData{
+    static float i = 0;
+    i++;
+    NSLog(@"--%f---",i);
+    _radialView.angle = i;
+    [_radialView setNeedsDisplay];
+    
+    
+}
+
 
 - (void)btnClick {
 
