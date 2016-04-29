@@ -28,6 +28,7 @@
 		9B0EA97C1CCF45BF00EAFFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97B1CCF45BF00EAFFCD /* Assets.xcassets */; };
 		9B0EA97F1CCF45BF00EAFFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97D1CCF45BF00EAFFCD /* LaunchScreen.storyboard */; };
 		9B0EA98A1CCF45BF00EAFFCD /* WiseCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */; };
+		9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE8E1CD33CB70014A74A /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		9B0EA9851CCF45BF00EAFFCD /* WiseCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiseCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiseCarUITests.m; sourceTree = "<group>"; };
 		9B0EA98B1CCF45BF00EAFFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B9FAE8D1CD33CB70014A74A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		9B9FAE8E1CD33CB70014A74A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +194,13 @@
 			children = (
 				86CD469B1CCF52930049F795 /* GFHttpTool.h */,
 				86CD469C1CCF52930049F795 /* GFHttpTool.m */,
+<<<<<<< HEAD
 				86CD04831CD342400062399A /* Reachability.h */,
 				86CD04841CD342400062399A /* Reachability.m */,
+=======
+				9B9FAE8D1CD33CB70014A74A /* Reachability.h */,
+				9B9FAE8E1CD33CB70014A74A /* Reachability.m */,
+>>>>>>> 6a5452aef17e09dab30795e0f781f678c4fdd970
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -423,7 +431,11 @@
 				86ECD0251CD1EAEB00EEE20B /* GFDelegateViewController.m in Sources */,
 				86853FB91CD050BB00730D51 /* GFSignUpViewController.m in Sources */,
 				9B0EA9711CCF45BF00EAFFCD /* main.m in Sources */,
+<<<<<<< HEAD
 				86CD04851CD342400062399A /* Reachability.m in Sources */,
+=======
+				9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */,
+>>>>>>> 6a5452aef17e09dab30795e0f781f678c4fdd970
 				86E0FF981CD1978B0020B3B5 /* GFVerifyViewController.m in Sources */,
 				86853FBC1CD050E100730D51 /* GFForgetPasswordViewController.m in Sources */,
 				862F95EF1CD067DD00957765 /* GFNavigationView.m in Sources */,

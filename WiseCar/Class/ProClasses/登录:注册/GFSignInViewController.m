@@ -13,7 +13,12 @@
 #import "GFTipView.h"
 #import "GFVerifyTool.h"
 #import "GFHttpTool.h"
+<<<<<<< HEAD
 #import "ViewController.h"
+=======
+#import "GFSignUpViewController.h"
+
+>>>>>>> 6a5452aef17e09dab30795e0f781f678c4fdd970
 
 @interface GFSignInViewController () {
 
@@ -310,6 +315,10 @@
                 [accountDef setObject:accountArr forKey:@"accountMsg"];
                 
                 [self.navigationController pushViewController:[[ViewController alloc] init] animated:NO];
+                
+                
+                
+                
                 
                 
                 NSLog(@"登录成功");
