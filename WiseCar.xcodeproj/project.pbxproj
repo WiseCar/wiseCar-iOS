@@ -27,12 +27,11 @@
 		9B0EA97C1CCF45BF00EAFFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97B1CCF45BF00EAFFCD /* Assets.xcassets */; };
 		9B0EA97F1CCF45BF00EAFFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97D1CCF45BF00EAFFCD /* LaunchScreen.storyboard */; };
 		9B0EA98A1CCF45BF00EAFFCD /* WiseCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */; };
-<<<<<<< HEAD
-		9B5068641CD209C300633195 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5068631CD209C300633195 /* Reachability.m */; };
+
 		9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */; };
-=======
+
 		9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE8E1CD33CB70014A74A /* Reachability.m */; };
->>>>>>> GFWiseCar
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,15 +83,13 @@
 		9B0EA9851CCF45BF00EAFFCD /* WiseCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiseCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiseCarUITests.m; sourceTree = "<group>"; };
 		9B0EA98B1CCF45BF00EAFFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		9B5068621CD209C300633195 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		9B5068631CD209C300633195 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+
 		9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDrawRadialGradientView.m; sourceTree = "<group>"; };
 		9B9FAE801CD2F3FF0014A74A /* CLDrawRadialGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDrawRadialGradientView.h; sourceTree = "<group>"; };
-=======
+
 		9B9FAE8D1CD33CB70014A74A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9B9FAE8E1CD33CB70014A74A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
->>>>>>> GFWiseCar
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,13 +193,11 @@
 			children = (
 				86CD469B1CCF52930049F795 /* GFHttpTool.h */,
 				86CD469C1CCF52930049F795 /* GFHttpTool.m */,
-<<<<<<< HEAD
-				9B5068621CD209C300633195 /* Reachability.h */,
-				9B5068631CD209C300633195 /* Reachability.m */,
-=======
+
+
 				9B9FAE8D1CD33CB70014A74A /* Reachability.h */,
 				9B9FAE8E1CD33CB70014A74A /* Reachability.m */,
->>>>>>> GFWiseCar
+
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -436,11 +431,11 @@
 				9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */,
 				86853FC21CD055E400730D51 /* GFTextFieldView.m in Sources */,
 				86CD46A71CCF65E90049F795 /* GFTipView.m in Sources */,
-<<<<<<< HEAD
+
 				9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */,
-=======
+
 				86ECD02C1CD2084400EEE20B /* GFVerifyTool.m in Sources */,
->>>>>>> GFWiseCar
+
 				9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */,
 				86CD469D1CCF52930049F795 /* GFHttpTool.m in Sources */,
 				86853FB61CD050A000730D51 /* GFSignInViewController.m in Sources */,

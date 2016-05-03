@@ -10,10 +10,7 @@
 #import "GFNavigationView.h"
 #import "GFTextFieldView.h"
 #import "GFVerifyViewController.h"
-<<<<<<< HEAD
 #import "GFHttpTool.h"
-
-=======
 #import "GFTipView.h"
 #import "GFVerifyTool.h"
 #import "GFHttpTool.h"
@@ -22,7 +19,6 @@
 
 #import "GFSignUpViewController.h"
 
->>>>>>> GFWiseCar
 
 @interface GFSignInViewController () {
 
@@ -285,24 +281,22 @@
 #pragma mark - 登录按钮点击事件
 - (void)signinBtnClick {
     
-<<<<<<< HEAD
-    [GFHttpTool post:@"http://dev.incardata.com.cn/wisecar/api/pub/login" parameters:@{@"phone":@"18672944895",@"pwd":@"123456"} success:^(id responseObject) {
-        
-        NSLog(@"--请求成功--%@",responseObject);
-        
-    } failure:^(NSError *error) {
-        
-        NSLog(@"----请求失败----%@--",error);
-        
-    }];
+//    [GFHttpTool post:@"http://dev.incardata.com.cn/wisecar/api/pub/login" parameters:@{@"phone":@"18672944895",@"pwd":@"123456"} success:^(id responseObject) {
+//        
+//        NSLog(@"--请求成功--%@",responseObject);
+//        
+//    } failure:^(NSError *error) {
+//        
+//        NSLog(@"----请求失败----%@--",error);
+//        
+//    }];
     
     
     
     
-    
-=======
+
     [self.view endEditing:YES];
->>>>>>> GFWiseCar
+
     
     
     

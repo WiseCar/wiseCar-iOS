@@ -21,14 +21,11 @@ NSString *const prefixURL = @"http://dev.incardata.com.cn/wisecar";
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-<<<<<<< HEAD
-    
-    
-=======
+
     // 去掉返回体中所有的空指针类型
     AFJSONResponseSerializer *response = (AFJSONResponseSerializer *)manager.responseSerializer;
     response.removesKeysWithNullValues = YES;
->>>>>>> GFWiseCar
+
     
     [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(success) {
