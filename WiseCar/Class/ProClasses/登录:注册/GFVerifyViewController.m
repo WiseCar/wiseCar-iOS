@@ -8,7 +8,9 @@
 
 #import "GFVerifyViewController.h"
 #import "GFNavigationView.h"
-#import "GFSignUpViewController.h"
+#import "GFTipView.h"
+#import "GFHttpTool.h"
+#import "GFSignInViewController.h"
 
 
 @interface GFVerifyViewController () {
@@ -135,9 +137,58 @@
 
 #pragma mark - 提交按钮点击事件
 - (void)submitBtnClick {
+    
+    [self.view endEditing:YES];
+    
+    if(self.verifyTxt.text.length == 0) {
+        
+        [self tipShow:@"请输入验证码"];
+        
+    }else if(self.verifyTxt.text.length != 6) {
+    
+        [self tipShow:@"您输入的验证码有误！"];
+        
+    }else {
+        
+        NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
+        mDic[@"nick"] = self.nick;
+        mDic[@"phone"] = self.phone;
+        mDic[@"pwd"] = self.pwd;
+        mDic[@"code"] = self.verifyTxt.text;
+        [GFHttpTool signupPostWithParameters:mDic success:^(id responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            NSString *status = responseObject[@"status"];
+            if([status isEqualToString:@"success"]) {
+            
+                NSLog(@"请求成功");
+                [self tipShow:@"注册成功"];
+                [self performSelector:@selector(pushVC) withObject:nil afterDelay:1.5];
+            }else {
+            
+                NSString *error = responseObject[@"error"];
+                [self tipShow:error];
+            }
+            
+            
+        } failure:^(NSError *error) {
+            
+            
+            
+            
+        }];
+        
+    
+    }
 
-    GFSignUpViewController *signupVC = [[GFSignUpViewController alloc] init];
-    [self.navigationController pushViewController:signupVC animated:NO];
+    
+    
+}
+
+- (void)pushVC {
+
+    GFSignInViewController *signinVC = [[GFSignInViewController alloc] init];
+    [self.navigationController pushViewController:signinVC animated:NO];
     
 }
 
@@ -169,6 +220,27 @@
     self.timeLab.attributedText = mStr;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeShow) userInfo:nil repeats:YES];
     
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc] init];
+    mDic[@"phone"] = self.phone;
+    [GFHttpTool verifyGetWithParameters:mDic success:^(id responseObject) {
+        NSLog(@"%@", responseObject);
+        NSString *status = responseObject[@"status"];
+        if([status isEqualToString:@"success"]) {
+            
+            [self tipShow:@"获取验证发送成功！"];
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
+
+- (void)tipShow:(NSString *)tipMsg {
+    
+    GFTipView *tipView = [[GFTipView alloc] initWithNormalHeightWithMessage:tipMsg withShowTimw:1.5];
+    [tipView tipViewShow];
 }
 
 

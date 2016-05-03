@@ -19,6 +19,7 @@
 		86ECD0251CD1EAEB00EEE20B /* GFDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ECD0241CD1EAEB00EEE20B /* GFDelegateViewController.m */; };
 		86ECD0271CD1F3BD00EEE20B /* servicedelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = 86ECD0261CD1F3BD00EEE20B /* servicedelegate.html */; };
 		86ECD0291CD1F45000EEE20B /* ssbb.html in Resources */ = {isa = PBXBuildFile; fileRef = 86ECD0281CD1F45000EEE20B /* ssbb.html */; };
+		86ECD02C1CD2084400EEE20B /* GFVerifyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */; };
 		9B0EA9711CCF45BF00EAFFCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9701CCF45BF00EAFFCD /* main.m */; };
 		9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9731CCF45BF00EAFFCD /* AppDelegate.m */; };
 		9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9761CCF45BF00EAFFCD /* ViewController.m */; };
@@ -26,8 +27,12 @@
 		9B0EA97C1CCF45BF00EAFFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97B1CCF45BF00EAFFCD /* Assets.xcassets */; };
 		9B0EA97F1CCF45BF00EAFFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0EA97D1CCF45BF00EAFFCD /* LaunchScreen.storyboard */; };
 		9B0EA98A1CCF45BF00EAFFCD /* WiseCarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */; };
+<<<<<<< HEAD
 		9B5068641CD209C300633195 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5068631CD209C300633195 /* Reachability.m */; };
 		9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */; };
+=======
+		9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FAE8E1CD33CB70014A74A /* Reachability.m */; };
+>>>>>>> GFWiseCar
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,8 @@
 		86ECD0241CD1EAEB00EEE20B /* GFDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFDelegateViewController.m; sourceTree = "<group>"; };
 		86ECD0261CD1F3BD00EEE20B /* servicedelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = servicedelegate.html; sourceTree = "<group>"; };
 		86ECD0281CD1F45000EEE20B /* ssbb.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ssbb.html; sourceTree = "<group>"; };
+		86ECD02A1CD2084400EEE20B /* GFVerifyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFVerifyTool.h; sourceTree = "<group>"; };
+		86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFVerifyTool.m; sourceTree = "<group>"; };
 		89294D3CEFF053C426901946 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA96C1CCF45BF00EAFFCD /* WiseCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA9701CCF45BF00EAFFCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,10 +84,15 @@
 		9B0EA9851CCF45BF00EAFFCD /* WiseCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiseCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0EA9891CCF45BF00EAFFCD /* WiseCarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WiseCarUITests.m; sourceTree = "<group>"; };
 		9B0EA98B1CCF45BF00EAFFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		9B5068621CD209C300633195 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9B5068631CD209C300633195 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		9B9FAE7F1CD2F3FF0014A74A /* CLDrawRadialGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDrawRadialGradientView.m; sourceTree = "<group>"; };
 		9B9FAE801CD2F3FF0014A74A /* CLDrawRadialGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDrawRadialGradientView.h; sourceTree = "<group>"; };
+=======
+		9B9FAE8D1CD33CB70014A74A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		9B9FAE8E1CD33CB70014A74A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+>>>>>>> GFWiseCar
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +185,8 @@
 				86853FC11CD055E400730D51 /* GFTextFieldView.m */,
 				862F95ED1CD067DD00957765 /* GFNavigationView.h */,
 				862F95EE1CD067DD00957765 /* GFNavigationView.m */,
+				86ECD02A1CD2084400EEE20B /* GFVerifyTool.h */,
+				86ECD02B1CD2084400EEE20B /* GFVerifyTool.m */,
 			);
 			path = "GF自定义";
 			sourceTree = "<group>";
@@ -182,8 +196,13 @@
 			children = (
 				86CD469B1CCF52930049F795 /* GFHttpTool.h */,
 				86CD469C1CCF52930049F795 /* GFHttpTool.m */,
+<<<<<<< HEAD
 				9B5068621CD209C300633195 /* Reachability.h */,
 				9B5068631CD209C300633195 /* Reachability.m */,
+=======
+				9B9FAE8D1CD33CB70014A74A /* Reachability.h */,
+				9B9FAE8E1CD33CB70014A74A /* Reachability.m */,
+>>>>>>> GFWiseCar
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -417,13 +436,18 @@
 				9B0EA9771CCF45BF00EAFFCD /* ViewController.m in Sources */,
 				86853FC21CD055E400730D51 /* GFTextFieldView.m in Sources */,
 				86CD46A71CCF65E90049F795 /* GFTipView.m in Sources */,
+<<<<<<< HEAD
 				9B9FAE811CD2F3FF0014A74A /* CLDrawRadialGradientView.m in Sources */,
+=======
+				86ECD02C1CD2084400EEE20B /* GFVerifyTool.m in Sources */,
+>>>>>>> GFWiseCar
 				9B0EA9741CCF45BF00EAFFCD /* AppDelegate.m in Sources */,
 				86CD469D1CCF52930049F795 /* GFHttpTool.m in Sources */,
 				86853FB61CD050A000730D51 /* GFSignInViewController.m in Sources */,
 				86ECD0251CD1EAEB00EEE20B /* GFDelegateViewController.m in Sources */,
 				86853FB91CD050BB00730D51 /* GFSignUpViewController.m in Sources */,
 				9B0EA9711CCF45BF00EAFFCD /* main.m in Sources */,
+				9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */,
 				86E0FF981CD1978B0020B3B5 /* GFVerifyViewController.m in Sources */,
 				86853FBC1CD050E100730D51 /* GFForgetPasswordViewController.m in Sources */,
 				862F95EF1CD067DD00957765 /* GFNavigationView.m in Sources */,

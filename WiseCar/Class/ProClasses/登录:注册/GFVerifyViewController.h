@@ -10,4 +10,9 @@
 
 @interface GFVerifyViewController : UIViewController
 
+
+@property (nonatomic, copy) NSString *nick;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *pwd;
+
 @end

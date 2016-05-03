@@ -10,13 +10,24 @@
 
 #import "GFTipView.h"
 #import "GFTextFieldView.h"
+<<<<<<< HEAD
 #import "CLDrawRadialGradientView.h"
+=======
+#import "GFHttpTool.h"
+>>>>>>> GFWiseCar
 
 
+<<<<<<< HEAD
 @interface ViewController ()
 {
     CLDrawRadialGradientView *_radialView;
 }
+=======
+
+
+
+
+>>>>>>> GFWiseCar
 @end
 
 @implementation ViewController
@@ -26,14 +37,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor cyanColor];
-//    GFTipView *tip1 = [GFTipView tipViewWithJinduTiaoTipName:@"进度条"];
-//    [self.view addSubview:tip1];
-//    [tip1 tipViewRemove2];
+ 
     
     
-//    GFTipView *tip2 = [[GFTipView alloc] initWithNormalHeightWithMessage:@"请求成功" withViewController:self withShowTimw:5];
-//    [tip2 tipViewShow];
+    
+}
 
+<<<<<<< HEAD
 //    GFTipView *tip3 = [[GFTipView alloc] initWithHeight:500 WithMessage:@"请求失败" withViewController:self withShowTimw:5];
 //    [tip3 tipViewShow];
 //
@@ -74,6 +84,34 @@
     [_radialView setNeedsDisplay];
     
     
+=======
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
+    
+    [GFHttpTool userMsgGetWithParameters:nil success:^(id responseObject) {
+        
+        
+        NSLog(@"%@", responseObject);
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    NSMutableDictionary *mdic = [[NSMutableDictionary alloc] init];
+    mdic[@"nick"] = @"老五";
+    mdic[@"city"] = @"中国";
+    mdic[@"province"] = @"亚洲";
+    mdic[@"headimgurl"] = @"http://banbao.chazidian.com/uploadfile/2016-01-25/s145368924044608.jpg";
+    [GFHttpTool updataUserPostWithParameters:mdic success:^(id responseObject) {
+        
+        NSLog(@"%@", responseObject);
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+>>>>>>> GFWiseCar
 }
 
 
