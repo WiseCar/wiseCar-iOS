@@ -13,7 +13,6 @@
 		86853FB91CD050BB00730D51 /* GFSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86853FB81CD050BB00730D51 /* GFSignUpViewController.m */; };
 		86853FBC1CD050E100730D51 /* GFForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86853FBB1CD050E100730D51 /* GFForgetPasswordViewController.m */; };
 		86853FC21CD055E400730D51 /* GFTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86853FC11CD055E400730D51 /* GFTextFieldView.m */; };
-		86CD04851CD342400062399A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CD04841CD342400062399A /* Reachability.m */; };
 		86CD469D1CCF52930049F795 /* GFHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CD469C1CCF52930049F795 /* GFHttpTool.m */; };
 		86CD46A71CCF65E90049F795 /* GFTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86CD46A61CCF65E90049F795 /* GFTipView.m */; };
 		86E0FF981CD1978B0020B3B5 /* GFVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E0FF971CD1978B0020B3B5 /* GFVerifyViewController.m */; };
@@ -54,8 +53,6 @@
 		86853FBB1CD050E100730D51 /* GFForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFForgetPasswordViewController.m; sourceTree = "<group>"; };
 		86853FC01CD055E400730D51 /* GFTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFTextFieldView.h; sourceTree = "<group>"; };
 		86853FC11CD055E400730D51 /* GFTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFTextFieldView.m; sourceTree = "<group>"; };
-		86CD04831CD342400062399A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		86CD04841CD342400062399A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		86CD469B1CCF52930049F795 /* GFHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFHttpTool.h; sourceTree = "<group>"; };
 		86CD469C1CCF52930049F795 /* GFHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFHttpTool.m; sourceTree = "<group>"; };
 		86CD46A51CCF65E90049F795 /* GFTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFTipView.h; sourceTree = "<group>"; };
@@ -194,13 +191,8 @@
 			children = (
 				86CD469B1CCF52930049F795 /* GFHttpTool.h */,
 				86CD469C1CCF52930049F795 /* GFHttpTool.m */,
-<<<<<<< HEAD
-				86CD04831CD342400062399A /* Reachability.h */,
-				86CD04841CD342400062399A /* Reachability.m */,
-=======
 				9B9FAE8D1CD33CB70014A74A /* Reachability.h */,
 				9B9FAE8E1CD33CB70014A74A /* Reachability.m */,
->>>>>>> 6a5452aef17e09dab30795e0f781f678c4fdd970
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -431,11 +423,7 @@
 				86ECD0251CD1EAEB00EEE20B /* GFDelegateViewController.m in Sources */,
 				86853FB91CD050BB00730D51 /* GFSignUpViewController.m in Sources */,
 				9B0EA9711CCF45BF00EAFFCD /* main.m in Sources */,
-<<<<<<< HEAD
-				86CD04851CD342400062399A /* Reachability.m in Sources */,
-=======
 				9B9FAE8F1CD33CB70014A74A /* Reachability.m in Sources */,
->>>>>>> 6a5452aef17e09dab30795e0f781f678c4fdd970
 				86E0FF981CD1978B0020B3B5 /* GFVerifyViewController.m in Sources */,
 				86853FBC1CD050E100730D51 /* GFForgetPasswordViewController.m in Sources */,
 				862F95EF1CD067DD00957765 /* GFNavigationView.m in Sources */,
